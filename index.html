@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset='utf-8'>
+    <meta http-equiv='X-UA-Compatible' content='IE=edge'>
+    <title>Page Title</title>
+    <meta name='viewport' content='width=device-width, initial-scale=1'>
+    <link rel='stylesheet' type='text/css' media='screen' href='main.css'>
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+</head>
+<body>
+    <div id="app">
+        <select v-model="searchData.selected.width"
+        @change="changeWidths">
+            <option disabled selected> Selecciona Ancho... </option>
+            <option             
+            v-for="width in searchData.widths">
+                {{ width.width_description }}
+            </option>
+        </select>
+        <select v-model="searchData.selected.ratio"
+        @change="changeRatios">            
+            
+            <option v-for="ratio in searchData.ratios" :key="ratio.id">{{ ratio.ratio_description }}</option>
+        </select>    
+        <select v-model="searchData.selected.rim"
+        @change="activeButton">
+            <option v-for="rim in searchData.rims" :key="rim.rim_description">
+                {{ rim.rim_description }}
+            </option>
+        </select>   
+        <button :disabled="searchData.buttonDisabled"
+        @click="sendToResult">Buscar</button>   
+    </div>
+    
+</body>
+<script src="js/main.js"></script>
+</html>
