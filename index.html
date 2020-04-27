@@ -11,25 +11,35 @@
 </head>
 <body>
     <div id="app">
-        <select v-model="searchData.selected.width"
-        @change="changeWidths">
-            <option disabled selected> Selecciona Ancho... </option>
+        <select v-model="searchData.selected.brand"
+        @change="changeBrand">
+            <option disabled selected> Selecciona Marca... </option>
             <option             
-            v-for="width in searchData.widths">
-                {{ width.width_description }}
+            v-for="brand in searchData.brands" :value="brand.brand_id">
+                {{ brand.brand_description }}
             </option>
         </select>
-        <select v-model="searchData.selected.ratio"
-        @change="changeRatios">            
+        
+        <select v-model="searchData.selected.model"
+        @change="changeModel">            
             
-            <option v-for="ratio in searchData.ratios" :key="ratio.id">{{ ratio.ratio_description }}</option>
+            <option v-for="model in searchData.models" :value="model.model_id" :key="model.model_id">{{ model.model_description }}</option>
         </select>    
-        <select v-model="searchData.selected.rim"
-        @change="activeButton">
-            <option v-for="rim in searchData.rims" :key="rim.rim_description">
-                {{ rim.rim_description }}
+
+        <select v-model="searchData.selected.year"
+        @change="changeYear">
+            <option v-for="year in searchData.years" :value="year.year_id" :key="year.id">
+                {{ year.year_description }}
             </option>
         </select>   
+
+        <select v-model="searchData.selected.version"
+        @change="activeButton">
+            <option v-for="version in searchData.versions" :value="version.version_id" :key="version.id">
+               {{version.id }} {{ version.version_description }}
+            </option>
+        </select>   
+
         <button :disabled="searchData.buttonDisabled"
         @click="sendToResult">Buscar</button>   
     </div>

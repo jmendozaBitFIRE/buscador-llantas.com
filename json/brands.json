@@ -1,0 +1,212 @@
+{
+    "brands": [
+        {
+            "brand_description": "ABARTH",
+            "brand_id": "1"
+        },
+        {
+            "brand_description": "ACURA",
+            "brand_id": "2"
+        },
+        {
+            "brand_description": "ALFA ROMEO",
+            "brand_id": "3"
+        },
+        {
+            "brand_description": "AUDI",
+            "brand_id": "4"
+        },
+        {
+            "brand_description": "BAIC",
+            "brand_id": "5"
+        },
+        {
+            "brand_description": "BENTLEY",
+            "brand_id": "6"
+        },
+        {
+            "brand_description": "BMW",
+            "brand_id": "7"
+        },
+        {
+            "brand_description": "BUICK",
+            "brand_id": "8"
+        },
+        {
+            "brand_description": "CADILLAC",
+            "brand_id": "9"
+        },
+        {
+            "brand_description": "CHEVROLET",
+            "brand_id": "10"
+        },
+        {
+            "brand_description": "CHRYSLER",
+            "brand_id": "11"
+        },
+        {
+            "brand_description": "DODGE",
+            "brand_id": "12"
+        },
+        {
+            "brand_description": "FERRARI",
+            "brand_id": "13"
+        },
+        {
+            "brand_description": "FIAT",
+            "brand_id": "14"
+        },
+        {
+            "brand_description": "FORD",
+            "brand_id": "15"
+        },
+        {
+            "brand_description": "GMC",
+            "brand_id": "16"
+        },
+        {
+            "brand_description": "HONDA",
+            "brand_id": "17"
+        },
+        {
+            "brand_description": "HUMMER",
+            "brand_id": "18"
+        },
+        {
+            "brand_description": "HYUNDAI",
+            "brand_id": "19"
+        },
+        {
+            "brand_description": "INFINITI",
+            "brand_id": "20"
+        },
+        {
+            "brand_description": "JAC",
+            "brand_id": "21"
+        },
+        {
+            "brand_description": "JAGUAR",
+            "brand_id": "22"
+        },
+        {
+            "brand_description": "JEEP",
+            "brand_id": "23"
+        },
+        {
+            "brand_description": "KIA",
+            "brand_id": "24"
+        },
+        {
+            "brand_description": "LAND ROVER",
+            "brand_id": "25"
+        },
+        {
+            "brand_description": "LINCOLN",
+            "brand_id": "26"
+        },
+        {
+            "brand_description": "LOTUS",
+            "brand_id": "27"
+        },
+        {
+            "brand_description": "MASERATI",
+            "brand_id": "28"
+        },
+        {
+            "brand_description": "MAYBACH",
+            "brand_id": "29"
+        },
+        {
+            "brand_description": "MAZDA",
+            "brand_id": "30"
+        },
+        {
+            "brand_description": "MERCEDES",
+            "brand_id": "31"
+        },
+        {
+            "brand_description": "MERCURY",
+            "brand_id": "32"
+        },
+        {
+            "brand_description": "MG",
+            "brand_id": "33"
+        },
+        {
+            "brand_description": "MINI",
+            "brand_id": "34"
+        },
+        {
+            "brand_description": "MITSUBISHI",
+            "brand_id": "35"
+        },
+        {
+            "brand_description": "NISSAN",
+            "brand_id": "36"
+        },
+        {
+            "brand_description": "PEUGEOT",
+            "brand_id": "37"
+        },
+        {
+            "brand_description": "PONTIAC",
+            "brand_id": "38"
+        },
+        {
+            "brand_description": "PORSCHE",
+            "brand_id": "39"
+        },
+        {
+            "brand_description": "RAM",
+            "brand_id": "40"
+        },
+        {
+            "brand_description": "RENAULT",
+            "brand_id": "41"
+        },
+        {
+            "brand_description": "ROVER",
+            "brand_id": "42"
+        },
+        {
+            "brand_description": "SAAB",
+            "brand_id": "43"
+        },
+        {
+            "brand_description": "SEAT",
+            "brand_id": "44"
+        },
+        {
+            "brand_description": "SMART",
+            "brand_id": "45"
+        },
+        {
+            "brand_description": "SRT",
+            "brand_id": "46"
+        },
+        {
+            "brand_description": "SUBARU",
+            "brand_id": "47"
+        },
+        {
+            "brand_description": "SUZUKI",
+            "brand_id": "48"
+        },
+        {
+            "brand_description": "TESLA",
+            "brand_id": "49"
+        },
+        {
+            "brand_description": "TOYOTA",
+            "brand_id": "50"
+        },
+        {
+            "brand_description": "VOLKSWAGEN",
+            "brand_id": "51"
+        },
+        {
+            "brand_description": "VOLVO",
+            "brand_id": "52"
+        }
+    ]
+}

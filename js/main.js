@@ -4,8 +4,12 @@ var app = new Vue({
     el: '#app',
     data: {
       message: 'Hello Vue!',
-      searchData:{                 
-        widths:[],
+      searchData:{ 
+        brands:[], 
+        models:[],
+        years: [],     
+        versions: [],          
+        widths:[],        
         ratios:[
             {
                 id: 0,
@@ -14,6 +18,10 @@ var app = new Vue({
         ], 
         rim:[],
         selected:{
+            brand: '',
+            model: '',
+            year: '',
+            version: '',
             ratio: '',
             width: '',
             rim: ''
@@ -22,8 +30,8 @@ var app = new Vue({
       }
     },
     async created(){
-        await axios.get('/json/widths.json').then(response => {
-            this.searchData.widths = response.data.widths
+        await axios.get('/json/brands.json').then(response => {
+            this.searchData.brands = response.data.brands
             //console.log(response.data)
         })
 
@@ -34,42 +42,82 @@ var app = new Vue({
         
     },
     methods:{
-        async changeWidths(){            
-            let selectedWidth = this.searchData.selected.width
-            await axios.get('/json/ratios.json').then(response =>{
-                let ratio = response.data.ratios
+        async changeBrand(){            
+            let selectedBrand = this.searchData.selected.brand
+            //console.log(selectedBrand)
+            await axios.get('/json/models.json').then(response =>{
+                let models = response.data.models
                 //this.searchData.ratios = ratio.filter(ratio => ratio.width.include('145'))
                 //console.log(ratio)
-                let results = Object.keys(ratio)     // Array of keys in the JSON obj
-                .map(key => ratio[key])     // Array of vehicle objects
-                .filter( (r) =>  r.width_description == selectedWidth )
+                let results = Object.keys(models)     // Array of keys in the JSON obj
+                .map(key => models[key])     // Array of vehicle objects
+                .filter( (r) =>  r.brand_id == selectedBrand)
 
-                this.searchData.ratios = results
+                this.searchData.models = results
                 //console.log(results)
             })            
         },
-        async changeRatios(){
-            let selectedWidth = this.searchData.selected.width
-            let selectedRatio = this.searchData.selected.ratio
-            await axios.get('/json/rims.json').then(response => {
-              let rim = response.data.rims
-              let results = Object.keys(rim)
-              .map(key => rim[key])
-              .filter((r) => (r.ratio_description == selectedRatio && r.width_description == selectedWidth))
+        async changeModel(){
+            let selectedBrand = this.searchData.selected.brand
+            let selectedModel = this.searchData.selected.model
+            console.log(selectedBrand)
+            console.log(selectedModel)
+            await axios.get('/json/years.json').then(response => {
+              let years = response.data.years
+              let results = Object.keys(years)
+              .map(key => years[key])
+              .filter((r) => (r.brand_id == selectedBrand && r.model_id == selectedModel))
 
-              this.searchData.rims = results
+              this.searchData.years = results
               console.log(results)              
             })
             
             //console.log(this.searchData.selected.ratio)
         },
+        async changeYear(){
+            let selectedBrand = this.searchData.selected.brand,
+                selectedModel = this.searchData.selected.model,
+                selectedYear = this.searchData.selected.year
+                console.log(selectedBrand)
+                console.log(selectedModel)
+                console.log(selectedYear)
+            await axios.get('/json/versions.json').then(response => {
+                let versions = response.data.versions,
+                    results = Object.keys(versions)
+                    .map(key => versions[key])
+                    .filter((r) => (r.brand_id == selectedBrand && r.model_id == selectedModel && r.year_id == selectedYear))
+
+                this.searchData.versions = results;
+                console.log(results)                
+            })
+        },
         activeButton(){
             console.log('Estoy validando...')
-            this.searchData.buttonDisabled = (this.searchData.selected.width != "" && this.searchData.selected.ratio != "" && this.searchData.selected.rim != "" ) ? false : true   
+            this.searchData.buttonDisabled = (this.searchData.selected.brand != "" && this.searchData.selected.model != "" && this.searchData.selected.year != "" && this.searchData.selected.version != "") ? false : true   
         },
-        sendToResult(){
-            let urlResult = '/?width=' + this.searchData.selected.width + '&ratio=' + this.searchData.selected.ratio + '&rim=' + this.searchData.selected.rim
-            window.location.href = urlResult
+        async sendToResult(){
+            let selectedBrand = this.searchData.selected.brand,
+                selectedModel = this.searchData.selected.model,
+                selectedYear = this.searchData.selected.year,
+                selectedVersion = this.searchData.selected.version
+
+                console.log(selectedBrand)
+                console.log(selectedModel)
+                console.log(selectedYear)
+                console.log(selectedVersion)
+
+            await axios.get('/json/all.json').then(response => {
+                let all = response.data.all
+                
+                results = Object.keys(all)
+                .map(key => all[key])
+                .filter((r) => (r.brand_id == selectedBrand && r.model_id == selectedModel && r.year_id == selectedYear && r.version_id == selectedVersion))
+
+                console.log(results)
+            })
+            
+            /* let urlResult = '/?width=' + this.searchData.selected.width + '&ratio=' + this.searchData.selected.ratio + '&rim=' + this.searchData.selected.rim
+            window.location.href = urlResult */
         }
     }
   })
