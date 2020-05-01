@@ -114,9 +114,13 @@ var app = new Vue({
                 .filter((r) => (r.brand_id == selectedBrand && r.model_id == selectedModel && r.year_id == selectedYear && r.version_id == selectedVersion))
 
                 console.log(results)
+                
+                let urlResult = '/?post_type=product&a_search=1&filter_ancho_auto='+ results[0].width_description + '&filter_alto_auto='+ results[0].ration_description+'&filter_rin_auto=' + results[0].rim_description
+                window.location.href = urlResult 
             })
             
-            /* let urlResult = '/?width=' + this.searchData.selected.width + '&ratio=' + this.searchData.selected.ratio + '&rim=' + this.searchData.selected.rim
+            //let urlResult = '/?width=' + this.searchData.selected.width + '&ratio=' + this.searchData.selected.ratio + '&rim=' + this.searchData.selected.rim
+            /* let urlResult = '/?post_type=product&a_search=1&filter_ancho_auto='+ this.searchData.selecte+'&filter_alto_auto=65&filter_rin_auto=13'
             window.location.href = urlResult */
         }
     }
