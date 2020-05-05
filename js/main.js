@@ -69,7 +69,7 @@ var app = new Vue({
               .filter((r) => (r.brand_id == selectedBrand && r.model_id == selectedModel))
 
               this.searchData.years = results
-              console.log(results)              
+              //console.log(results)              
             })
             
             //console.log(this.searchData.selected.ratio)
@@ -78,9 +78,9 @@ var app = new Vue({
             let selectedBrand = this.searchData.selected.brand,
                 selectedModel = this.searchData.selected.model,
                 selectedYear = this.searchData.selected.year
-                console.log(selectedBrand)
+                /* console.log(selectedBrand)
                 console.log(selectedModel)
-                console.log(selectedYear)
+                console.log(selectedYear) */
             await axios.get('/json/versions.json').then(response => {
                 let versions = response.data.versions,
                     results = Object.keys(versions)
@@ -88,7 +88,7 @@ var app = new Vue({
                     .filter((r) => (r.brand_id == selectedBrand && r.model_id == selectedModel && r.year_id == selectedYear))
 
                 this.searchData.versions = results;
-                console.log(results)                
+                //console.log(results)                
             })
         },
         activeButton(){
@@ -116,7 +116,8 @@ var app = new Vue({
                 console.log(results)
                 
                 let urlResult = '/?post_type=product&a_search=1&filter_ancho_auto='+ results[0].width_description + '&filter_alto_auto='+ results[0].ration_description+'&filter_rin_auto=' + results[0].rim_description
-                window.location.href = urlResult 
+
+               window.location.href = urlResult 
             })
             
             //let urlResult = '/?width=' + this.searchData.selected.width + '&ratio=' + this.searchData.selected.ratio + '&rim=' + this.searchData.selected.rim
