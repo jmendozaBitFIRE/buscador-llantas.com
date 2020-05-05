@@ -115,7 +115,7 @@ var app = new Vue({
 
                 console.log(results)
                 
-                let urlResult = '/?post_type=product&a_search=1&filter_ancho_auto='+ results[0].width_description + '&filter_alto_auto='+ results[0].ration_description+'&filter_rin_auto=' + results[0].rim_description
+                let urlResult = '/?post_type=product&a_search=1&filter_ancho_auto='+ results[0].width_description + '&filter_alto_auto='+ results[0].ratio_description+'&filter_rin_auto=' + results[0].rim_description
 
                window.location.href = urlResult 
             })
