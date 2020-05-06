@@ -188,6 +188,7 @@
         },
         {
             "brand_description": "ABARTH",
+			"brand_id": "1",
             "model_description": "500",
             "model_id": "32"
         },
