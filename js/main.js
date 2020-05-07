@@ -18,10 +18,10 @@ var app = new Vue({
         ], 
         rim:[],
         selected:{
-            brand: '',
-            model: '',
-            year: '',
-            version: '',
+            brand: 0,
+            model: 0,
+            year: 0,
+            version: 0,
             ratio: '',
             width: '',
             rim: ''

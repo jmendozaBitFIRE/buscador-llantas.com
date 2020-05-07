@@ -13,7 +13,7 @@
     <div id="app">
         <select v-model="searchData.selected.brand"
         @change="changeBrand">
-            <option disabled selected> Selecciona Marca... </option>
+            <option value="0" selected>-- Marca --</option>
             <option             
             v-for="brand in searchData.brands" :value="brand.brand_id">
                 {{ brand.brand_description }}
@@ -22,12 +22,13 @@
         
         <select v-model="searchData.selected.model"
         @change="changeModel">            
-            
+        <option value="0" selected>-- Modelo --</option>
             <option v-for="model in searchData.models" :value="model.model_id" :key="model.model_id">{{ model.model_description }}</option>
         </select>    
 
         <select v-model="searchData.selected.year"
         @change="changeYear">
+        <option value="0" selected>-- Año --</option>
             <option v-for="year in searchData.years" :value="year.year_id" :key="year.id">
                 {{ year.year_description }}
             </option>
@@ -35,6 +36,7 @@
 
         <select v-model="searchData.selected.version"
         @change="activeButton">
+        <option value="0" selected>-- Versión --</option>
             <option v-for="version in searchData.versions" :value="version.version_id" :key="version.id">
                {{version.id }} {{ version.version_description }}
             </option>
