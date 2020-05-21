@@ -5,7 +5,11 @@ var app = new Vue({
     data: {
       message: 'Hello Vue!',
       searchData:{ 
+
         brands:[], 
+        allModels:[],
+        allYears:[],
+        allVersions:[],
         models:[],
         years: [],     
         versions: [],          
@@ -19,9 +23,13 @@ var app = new Vue({
         rim:[],
         selected:{
             brand: '',
+            brandName: '',
             model: '',
+            modelName: '',
             year: '',
+            yearName: '',
             version: '',
+            versionName: '',
             ratio: '',
             width: '',
             rim: ''
@@ -30,10 +38,17 @@ var app = new Vue({
       }
     },
     async created(){
-        await axios.get('/json/brands.json').then(response => {
-            this.searchData.brands = response.data.brands
-            //console.log(response.data)
-        })
+        let brands = await axios.get('/json/brands.json'),
+            models = await axios.get('/json/models.json'),
+            years = await axios.get('/json/years.json'),
+            versions = await axios.get('/json/versions.json')
+        
+        this.searchData.brands = brands.data.brands
+        this.searchData.allModels = models.data.models
+        this.searchData.allYears = years.data.years
+        this.searchData.allVersions = versions.data.versions
+
+        
 
         
 
@@ -45,32 +60,39 @@ var app = new Vue({
         async changeBrand(){            
             let selectedBrand = this.searchData.selected.brand
             //console.log(selectedBrand)
-            await axios.get('/json/models.json').then(response =>{
-                let models = response.data.models
+           /*  await axios.get('/json/models.json').then(response =>{
+                let models = response.data.models */
                 //this.searchData.ratios = ratio.filter(ratio => ratio.width.include('145'))
                 //console.log(ratio)
-                let results = Object.keys(models)     // Array of keys in the JSON obj
-                .map(key => models[key])     // Array of vehicle objects
+                let results = Object.keys(this.searchData.allModels)     // Array of keys in the JSON obj
+                .map(key => this.searchData.allModels[key])     // Array of vehicle objects
                 .filter( (r) =>  r.brand_id == selectedBrand)
 
                 this.searchData.models = results
                 //console.log(results)
-            })            
+                this.searchData.selected.brandName = document.getElementById('sel_brand').options[this.searchData.selected.brand].text;                
+            /* })    */         
         },
-        async changeModel(){
+        async changeModel( model ){
+            console.log( model.options )
             let selectedBrand = this.searchData.selected.brand
             let selectedModel = this.searchData.selected.model
-            console.log(selectedBrand)
-            console.log(selectedModel)
-            await axios.get('/json/years.json').then(response => {
-              let years = response.data.years
+            /* console.log(selectedBrand)
+            console.log(selectedModel) */
+            /* await axios.get('/json/years.json').then(response => { */
+              let years = this.searchData.allYears
               let results = Object.keys(years)
               .map(key => years[key])
               .filter((r) => (r.brand_id == selectedBrand && r.model_id == selectedModel))
 
               this.searchData.years = results
-              //console.log(results)              
-            })
+              //console.log(results)    
+              //this.searchData.selected.modelName = 
+            
+              /* modelOptions.forEach(element => {
+                  console.log(element);
+              }); */
+            /* }) */
             
             //console.log(this.searchData.selected.ratio)
         },
@@ -81,15 +103,15 @@ var app = new Vue({
                 /* console.log(selectedBrand)
                 console.log(selectedModel)
                 console.log(selectedYear) */
-            await axios.get('/json/versions.json').then(response => {
-                let versions = response.data.versions,
+            /* await axios.get('/json/versions.json').then(response => { */
+                let versions = this.searchData.allVersions,
                     results = Object.keys(versions)
                     .map(key => versions[key])
                     .filter((r) => (r.brand_id == selectedBrand && r.model_id == selectedModel && r.year_id == selectedYear))
 
                 this.searchData.versions = results;
                 //console.log(results)                
-            })
+            /* }) */
         },
         activeButton(){
             console.log('Estoy validando...')
