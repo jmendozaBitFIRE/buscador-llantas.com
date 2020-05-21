@@ -22,14 +22,10 @@ var app = new Vue({
         ], 
         rim:[],
         selected:{
-            brand: '',
-            brandName: '',
-            model: '',
-            modelName: '',
-            year: '',
-            yearName: '',
-            version: '',
-            versionName: '',
+            brand: 0,
+            model: 0,
+            year: 0,
+            version: 0,
             ratio: '',
             width: '',
             rim: ''
