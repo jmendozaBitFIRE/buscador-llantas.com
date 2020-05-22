@@ -10,6 +10,7 @@ var app = new Vue({
         allModels:[],
         allYears:[],
         allVersions:[],
+        all:[],
         models:[],
         years: [],     
         versions: [],          
@@ -37,12 +38,15 @@ var app = new Vue({
         let brands = await axios.get('/json/brands.json'),
             models = await axios.get('/json/models.json'),
             years = await axios.get('/json/years.json'),
-            versions = await axios.get('/json/versions.json')
+            versions = await axios.get('/json/versions.json'),
+            all = await axios.get('/json/all.json')
         
         this.searchData.brands = brands.data.brands
         this.searchData.allModels = models.data.models
         this.searchData.allYears = years.data.years
         this.searchData.allVersions = versions.data.versions
+        this.searchData.all = all.data.all
+
 
         
 
@@ -124,8 +128,8 @@ var app = new Vue({
                 console.log(selectedYear)
                 console.log(selectedVersion)
 
-            await axios.get('/json/all.json').then(response => {
-                let all = response.data.all
+            /* await axios.get('/json/all.json').then(response => { */
+                let all = this.searchData.all
                 
                 results = Object.keys(all)
                 .map(key => all[key])
@@ -136,7 +140,7 @@ var app = new Vue({
                 let urlResult = '/?post_type=product&a_search=1&filter_ancho_auto='+ results[0].width_description + '&filter_alto_auto='+ results[0].ratio_description+'&filter_rin_auto=' + results[0].rim_description
 
                window.location.href = urlResult 
-            })
+            /* }) */
             
             //let urlResult = '/?width=' + this.searchData.selected.width + '&ratio=' + this.searchData.selected.ratio + '&rim=' + this.searchData.selected.rim
             /* let urlResult = '/?post_type=product&a_search=1&filter_ancho_auto='+ this.searchData.selecte+'&filter_alto_auto=65&filter_rin_auto=13'
