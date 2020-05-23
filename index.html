@@ -3,7 +3,7 @@
 <head>
     <meta charset='utf-8'>
     <meta http-equiv='X-UA-Compatible' content='IE=edge'>
-    <title>Motor</title>
+    <title>Page Title</title>
     <meta name='viewport' content='width=device-width, initial-scale=1'>
     <link rel='stylesheet' type='text/css' media='screen' href='main.css'>
     <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
@@ -15,7 +15,7 @@
         @change="changeBrand">
             <option value="0" selected>-- Marca --</option>
             <option             
-            v-for="brand in searchData.brands" :value="brand.brand_id">
+            v-for="brand in searchData.brands" :value="brand.brand_id" :key="brand.brand_id">
                 {{ brand.brand_description }}
             </option>
         </select>

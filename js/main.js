@@ -137,7 +137,7 @@ var app = new Vue({
 
                 console.log(results)
                 
-                let urlResult = '/?post_type=product&a_search=1&filter_ancho_auto='+ results[0].width_description + '&filter_alto_auto='+ results[0].ratio_description+'&filter_rin_auto=' + results[0].rim_description
+                let urlResult = '/?post_type=product&a_search=1&filter_ancho_auto='+ results[0].width_description + '&filter_alto_auto='+ results[0].ratio_description+'&filter_rin_auto=' + results[0].rim_description + '&modelo_auto='+results[0].brand_description+'%20'+results[0].model_description+'%20'+results[0].year_description+'%20'+results[0].version_description
 
                window.location.href = urlResult 
             /* }) */
@@ -145,6 +145,7 @@ var app = new Vue({
             //let urlResult = '/?width=' + this.searchData.selected.width + '&ratio=' + this.searchData.selected.ratio + '&rim=' + this.searchData.selected.rim
             /* let urlResult = '/?post_type=product&a_search=1&filter_ancho_auto='+ this.searchData.selecte+'&filter_alto_auto=65&filter_rin_auto=13'
             window.location.href = urlResult */
+            
         }
     }
   })
